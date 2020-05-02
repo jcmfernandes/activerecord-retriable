@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jcmfernandes/activerecord-retriable.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/activerecord-retriable.svg)](https://badge.fury.io/rb/activerecord-retriable)
 
-[travis]: http://travis-ci.org/jcmfernandes/better_error
+[travis]: http://travis-ci.org/jcmfernandes/activerecord-retriable
 
 Retry your `ActiveRecord` transactions. Inspired by
 [Sequel's](http://sequel.jeremyevans.net/) way of doing it.
