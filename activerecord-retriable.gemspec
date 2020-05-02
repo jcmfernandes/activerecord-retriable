@@ -1,8 +1,8 @@
-require_relative 'lib/activerecord/retriable/version'
+require_relative 'lib/active_record_retriable/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "activerecord-retriable"
-  spec.version       = ActiveRecord::Retriable::VERSION
+  spec.version       = ActiveRecordRetriable::VERSION
   spec.authors       = ["João Fernandes"]
   spec.email         = ["joao.fernandes@ist.utl.pt"]
 

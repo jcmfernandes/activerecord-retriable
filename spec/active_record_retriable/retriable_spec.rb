@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'activerecord/retriable'
+require 'activerecord-retriable'
 
 RSpec.describe 'retriable transactions' do
   before(:all) do

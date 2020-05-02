@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+require 'active_record_retriable/version'
+
 require 'active_support/concern'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/array/wrap'
 require 'active_record'
 require 'active_record/base'
 
-module Retriable
+module ActiveRecordRetriable
   extend ActiveSupport::Concern
 
   included do
@@ -36,4 +38,3 @@ module Retriable
     end
   end
 end
-ActiveRecord::Base.include(Retriable)
