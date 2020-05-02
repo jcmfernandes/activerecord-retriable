@@ -38,7 +38,8 @@ Retry if `ActiveRecord::TransactionRollbackError` or
 `ActiveRecord::LockWaitTimeout` are raised:
 
 ```ruby
-ActiveRecord::Base.transaction(retry_on: [ActiveRecord::TransactionRollbackError, ActiveRecord::LockWaitTimeout]) do
+ActiveRecord::Base.transaction(retry_on: [ActiveRecord::TransactionRollbackError,
+                                          ActiveRecord::LockWaitTimeout]) do
   ...
 end
 ```
