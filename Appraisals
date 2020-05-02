@@ -21,3 +21,9 @@ appraise 'rails-6_0' do
   gem 'activerecord', '~> 6.0.0'
   gem 'activesupport', '~> 6.0.0'
 end
+
+appraise 'rails-edge' do
+  gem 'railties', github: 'rails/rails'
+  gem 'activerecord', github: 'rails/rails'
+  gem 'activesupport', github: 'rails/rails'
+end
