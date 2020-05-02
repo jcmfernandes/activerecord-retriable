@@ -1,0 +1,12 @@
+---
+language: ruby
+sudo: false
+cache: bundler
+gemfile:
+  - gemfiles/rails_5.gemfile
+  - gemfiles/rails_6.gemfile
+rvm:
+  - 2.5.7
+  - 2.6.5
+  - 2.7.1
+script: bundle exec rspec
