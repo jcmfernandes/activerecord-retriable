@@ -3,6 +3,10 @@
 require 'activerecord-retriable'
 
 RSpec.describe 'retriable transactions' do
+
+  class Error1 < StandardError; end
+  class Error2 < StandardError; end
+
   before(:all) do
     class TestModel < ActiveRecord::Base; end
     TestModel.connection.create_table(TestModel.table_name) do |t|
@@ -40,13 +44,13 @@ RSpec.describe 'retriable transactions' do
       a = []
 
       expect do
-        TestModel.transaction(retry_on: [ActiveRecord::SerializationFailure, ActiveRecord::Deadlocked], num_retries: 1) do
+        TestModel.transaction(retry_on: [Error1, Error2], num_retries: 1) do
           TestModel.new(value: 1).tap { |tm| a << tm }.tap { |tm| tm.save! }
 
-          raise ActiveRecord::SerializationFailure if a.size == 1
-          raise ActiveRecord::Deadlocked if a.size == 2
+          raise Error1 if a.size == 1
+          raise Error2 if a.size == 2
         end
-      end.to raise_error(ActiveRecord::Deadlocked)
+      end.to raise_error(Error2)
       expect(TestModel.count).to be_zero
       expect(a.map(&:value)).to contain_exactly(1, 1)
     end
@@ -55,13 +59,13 @@ RSpec.describe 'retriable transactions' do
       a = []
 
       expect do
-        TestModel.transaction(retry_on: [ActiveRecord::Deadlocked], num_retries: nil) do
+        TestModel.transaction(retry_on: [Error2], num_retries: nil) do
           TestModel.new(value: 1).tap { |tm| a << tm }.tap { |tm| tm.save! }
 
-          raise ActiveRecord::SerializationFailure if a.size >= 100
-          raise ActiveRecord::Deadlocked
+          raise Error1 if a.size >= 100
+          raise Error2
         end
-      end.to raise_error(ActiveRecord::SerializationFailure)
+      end.to raise_error(Error1)
       expect(TestModel.count).to be_zero
       expect(a.map(&:value)).to match_array([1] * 100)
     end
@@ -71,11 +75,11 @@ RSpec.describe 'retriable transactions' do
       retryer = proc { a << TestModel.new(value: 2) }
 
       expect do
-        TestModel.transaction(retry_on: [ActiveRecord::Deadlocked], num_retries: 1, before_retry: retryer) do
+        TestModel.transaction(retry_on: [Error1], num_retries: 1, before_retry: retryer) do
           TestModel.new(value: 1).tap { |tm| a << tm }.tap { |tm| tm.save! }
-          raise ActiveRecord::Deadlocked
+          raise Error1
         end
-      end.to raise_error(ActiveRecord::Deadlocked)
+      end.to raise_error(Error1)
       expect(TestModel.count).to be_zero
       expect(a.map(&:value)).to contain_exactly(1, 2, 1)
     end

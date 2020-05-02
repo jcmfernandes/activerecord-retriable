@@ -2,6 +2,8 @@ appraise 'rails-5_0' do
   gem 'railties', '~> 5.0.0'
   gem 'activerecord', '~> 5.0.0'
   gem 'activesupport', '~> 5.0.0'
+
+  gem 'sqlite3', '~> 1.3.6'
 end
 
 appraise 'rails-5_1' do
