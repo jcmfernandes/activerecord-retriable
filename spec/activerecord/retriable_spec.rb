@@ -27,7 +27,7 @@ RSpec.describe 'retriable transactions' do
         TestModel.transaction(random_kwarg: true) do
           TestModel.create!
         end
-      end.to raise_error(ArgumentError, 'unknown keyword: :random_kwarg')
+      end.to raise_error(ArgumentError, /unknown keyword: [:]{0,1}random_kwarg/)
       expect(TestModel.count).to be_zero
 
       TestModel.transaction(requires_new: true) do
