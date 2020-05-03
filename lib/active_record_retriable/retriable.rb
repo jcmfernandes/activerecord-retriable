@@ -2,11 +2,10 @@
 
 require 'active_record_retriable/version'
 
+require 'rails'
 require 'active_support/concern'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/array/wrap'
-require 'active_record'
-require 'active_record/base'
 
 module ActiveRecordRetriable
   extend ActiveSupport::Concern
