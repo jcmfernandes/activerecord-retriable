@@ -1,9 +1,9 @@
 # ActiveRecord::Retriable
 
-[![Build Status](https://travis-ci.org/jcmfernandes/activerecord-retriable.svg?branch=master)][travis]
+[![Build Status](https://github.com/jcmfernandes/activerecord-retriable/workflows/Test/badge.svg?branch=master&event=push)][gh-actions]
 [![Gem Version](https://badge.fury.io/rb/activerecord-retriable.svg)](https://badge.fury.io/rb/activerecord-retriable)
 
-[travis]: http://travis-ci.org/jcmfernandes/activerecord-retriable
+[gh-actions]: https://github.com/jcmfernandes/activerecord-retriable/actions?query=workflow%3ATest
 
 Retry your `ActiveRecord` transactions. Inspired by
 [Sequel's](http://sequel.jeremyevans.net/) way of doing it.
