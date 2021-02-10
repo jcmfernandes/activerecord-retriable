@@ -13,7 +13,7 @@ jobs:
         exclude:
           - ruby: 2.5
             gemfile: rails_edge
-          - ruby 2.6
+          - ruby: 2.6
             gemfile: rails_edge
     runs-on: ubuntu-latest
     env:
