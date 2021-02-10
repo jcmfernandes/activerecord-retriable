@@ -19,13 +19,13 @@ module ActiveRecordRetriable
                     num_retries: Rails.configuration.active_record.default_transaction_retries,
                     before_retry: nil,
                     **options, &block)
-      return super(options, &block) if retry_on.blank?
+      return super(**options, &block) if retry_on.blank?
 
       retry_on = Array.wrap(retry_on)
       total_retries = num_retries
       num_retries = 0
       begin
-        super(options, &block)
+        super(**options, &block)
       rescue *retry_on => e
         num_retries += 1
         if total_retries.nil? || num_retries <= total_retries
