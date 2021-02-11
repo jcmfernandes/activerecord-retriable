@@ -1,8 +1,9 @@
 # ActiveRecord::Retriable
 
 [![Build Status](https://github.com/jcmfernandes/activerecord-retriable/workflows/Test/badge.svg?branch=master&event=push)][gh-actions]
-[![Gem Version](https://badge.fury.io/rb/activerecord-retriable.svg)](https://badge.fury.io/rb/activerecord-retriable)
+[![Gem Version](https://img.shields.io/gem/v/activerecord-retriable?style=plastic)][rubygems]
 
+[rubygems]: https://rubygems.org/gems/activerecord-retriable
 [gh-actions]: https://github.com/jcmfernandes/activerecord-retriable/actions?query=workflow%3ATest
 
 Retry your `ActiveRecord` transactions. Inspired by
